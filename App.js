@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import api from './src/services/api'
 import styles from './styles'
@@ -36,7 +36,7 @@ function App() {
                         </Picker>
                     </View>
                     <View style={styles.input}>
-                        <TextInput style={styles.textInput} placeholder="valor para conversão" value={value} onChangeText={(text) => setValue(text)}/>
+                        <TextInput style={styles.textInput} keyboardType="numeric" placeholder="valor para conversão" value={value} onChangeText={(text) => setValue(text)}/>
                     </View>
                     <TouchableOpacity style={styles.btn} onPress={() => convert()}>
                         <Text style={styles.btnText}>Converter</Text>
@@ -82,7 +82,7 @@ function App() {
     })
 
     return (
-        <View>
+        <ScrollView>
             <View style={styles.header}>
                 <Text style={styles.headerText}>Conversor de Moedas</Text>
             </View>
@@ -90,7 +90,7 @@ function App() {
                 <Text style={styles.currencyText}>{convertedValue.toFixed(2)}</Text>
             </View>
             { showApp() }
-        </View>
+        </ScrollView>
     )
 }
 
