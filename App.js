@@ -58,7 +58,7 @@ function App() {
         setIsLoading(true)
         const query = `${from}_${to}`
         api.get(`convert?q=${query}&compact=ultra&apiKey=${API_KEY}`).then((response) => {
-            const val = Number.parseFloat(response.data[query])
+            const val = Number.parseFloat(response.data.results[query].val)
             const total = val * amount
             setConvertedValue(total)
             setIsLoading(false)
